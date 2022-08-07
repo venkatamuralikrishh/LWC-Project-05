@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="For-Each loop in LWC Using SLDS Data table" icon-name="standard:contact_list">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered" border="1">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate">Id</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate">Location</div>
+                    </th>
+                </tr>
+            </thead>
+            <template for:each={students} for:item="stu">
+                <tr key={stu.Id} class="slds-hint-parent">
+                    <td><div class="slds-truncate">{stu.Id}</div></td>                   
+                    <td><div class="slds-truncate">{stu.Name}</div></td>
+                    <td><div class="slds-truncate"></div>{stu.Location}</div></td>
+                </tr>
+            </template>
+        </table>
+    </lightning-card>
+</template>

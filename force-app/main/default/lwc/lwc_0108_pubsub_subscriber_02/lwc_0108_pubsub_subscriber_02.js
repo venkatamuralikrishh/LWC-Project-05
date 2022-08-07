@@ -17,7 +17,7 @@ export default class Lwc_0108_pubsub_subscriber_02 extends LightningElement {
     @wire(CurrentPageReference) pageRef;
     connectedCallback(){
         pubsub.registerListener('sendAcc', this.handleCallBack, this);
-        alert('hello');
+        //alert('hello');
     }
     disconnectedCallback(){
         pubsub.unregisterAllListeners(this);
