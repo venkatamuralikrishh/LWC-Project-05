@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Get Data From Child LWC using Custom event" icon-name="standard:account_info">
+        <template if:true={accData}>
+            <p> data received from child</p>
+            <lightning-datatable key-field="Id" data={accData} columns={columns}>
+            </lightning-datatable>
+        </template>
+        <c-child-to-parent-event-child01 onsend={sendHandler}></c-child-to-parent-event-child01>
+    </lightning-card>
+</template>
