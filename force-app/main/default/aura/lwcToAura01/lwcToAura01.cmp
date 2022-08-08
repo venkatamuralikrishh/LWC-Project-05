@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="accountId" type="Id" />
+    <aura:attribute name="fields" type="String[]" default="['Id','Name']" />
+    <lightning:card title="Aura Component">  
+        <lightning:recordForm
+        recordId="{!v.accountId}"
+        objectApiName="Account"
+        layoutType="Compact"
+        fields="{!v.fields}"
+        columns="1"
+        mode="readonly" />
+    </lightning:card> 
+    <lightning:card title="Lwc Component">
+        <c:childLwcCompInAura01 onsendAccountId="{!c.handleEvent}"/>
+    </lightning:card>
+</aura:component>	
