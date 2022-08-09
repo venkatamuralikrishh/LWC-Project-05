@@ -2,11 +2,11 @@
     <lightning-card title="Delete Record using Wire Adapter (without apex)" icon-name="utility:record_delete">
         <template if:true={accounts}>
             <template for:each={accounts} for:item="acc">
-                <lightning-layout key={acc.Id}>
+                <lightning-layout key={acc.Id} class="slds-var-m-vertical_x-small">
                     <lightning-layout-item flexibility="grow" title="Account record Id">
                     {acc.Id}
                     </lightning-layout-item>
-                    <lightning-layout-item flexibility="grow" title="Account record name">
+                    <lightning-layout-item flexibility="grow" title="Account record name" style="min-width:200px">
                         {acc.Name}
                     </lightning-layout-item>
                     <lightning-layout-item flexibility="grow" title="delete">

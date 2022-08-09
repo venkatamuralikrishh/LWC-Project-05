@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Permission based UI (custom permission)" icon-name="utility:user">
+        <div class="slds-m-around_medium">
+            <template if:true={checkAccess}>
+                <h1>You have access to see the message</h1>
+            </template>
+            <template if:false={checkAccess}>
+                <h1>You dont have access to see the message</h1>
+            </template>
+        </div>
+    </lightning-card>
+</template>
