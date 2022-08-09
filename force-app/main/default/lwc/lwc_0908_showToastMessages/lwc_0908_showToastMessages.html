@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Show Toast messages" icon-name="utility:live_message">
+        <div class="slds-m-around_medium">
+            <lightning-button label="Success" variant="success" onclick={successHandler}>
+            </lightning-button>
+            <lightning-button label="Error" variant="destructive" onclick={errorHandler}>
+            </lightning-button>
+            <lightning-button label="Warning" variant="destructive-text" onclick={warningHandler}>
+            </lightning-button>
+            <lightning-button label="Info" variant="Neutral" onclick={infoHandler}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>
