@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Get logged in user details" icon-name="standard:user">
+        <div class="slds-m-around_medium">
+            {userId} <br/>
+            <template if:true={user}>
+                {user.fields.Email.value} <br/>
+                {user.fields.Name.value} 
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+    </lightning-card>
+</template>
