@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Custom Modal/Popup in LWC" icon-name="standard:record_create">
+        <div class="slds-m-around_medium">
+            <lightning-button label="Custom Modal/Popup" onclick={showHanlder}></lightning-button>
+        </div>
+        <!-- modal start -->
+        <template if:true={showModal}>
+            <!--I Used SLDS for this code.Here is link https://www.lightningdesignsystem.com/components/modals/--> 
+            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <lightning-button-icon icon-name="utility:close" class="slds-modal__close" icon-class="slds-button_icon-inverse" alternative-text="close" title="Close the modal" onclick={cancelHandler}></lightning-button-icon>
+                        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Custom Modal/Popup Practice 01</h1>
+                    </header>
+                <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <h2><strong>This is the first custom modal in LWC</strong></h2>
+                        <lightning-input label="Enter Your Name" placeholder="Enter Your Name" value={name} class="input"></lightning-input>
+                    </div>
+                <!-- modal footer start-->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={cancelHandler}>Cancel</button>
+                        <button class="slds-button slds-button_neutral" onclick={saveHandler}>Save</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </template>
+        <template if:true={name}>
+            <div class="slds-m-around_medium">
+                <strong>{name}</strong>
+            </div>
+        </template>
+    </lightning-card>
+</template>
