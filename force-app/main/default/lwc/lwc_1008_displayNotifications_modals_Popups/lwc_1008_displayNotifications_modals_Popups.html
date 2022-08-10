@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Modals/Popups in LWC" icon-name="utility:notification">
+        <div class="slds-p-around_medium">
+            <lightning-button label="Open Alert Modal" variant="neutral" onclick={alertHandler}>
+            </lightning-button><br/><br/>
+            <lightning-button label="Open Confirm Modal" variant="neutral" onclick={confirmHandler}>
+            </lightning-button><br/><br/>
+            <lightning-button label="Open Prompt Modal" variant="neutral" onclick={promptHandler}>
+            </lightning-button><br/><br/>
+            {name}
+            {error}
+        </div>
+    </lightning-card>
+</template>
