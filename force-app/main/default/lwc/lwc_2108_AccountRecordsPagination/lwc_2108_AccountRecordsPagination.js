@@ -10,6 +10,15 @@ export default class Lwc_2108_AccountRecordsPagination extends LightningElement 
    * This is to display the Account records in pagination way
    * Using Lightning Datatable
    */
+  @track value = 5;
+
+  get options() {
+    return [
+      { label: 5, value: 5 },
+      { label: 10, value: 10 },
+      { label: 15, value: 15 }
+    ];
+  }
   @track currentPageNum = 1; // the current Page number, initial value is 1
   @track totalRecords = []; // the Total records retrieved from database
   @track displayRecords = []; // the records that should display in a particular page
@@ -19,6 +28,13 @@ export default class Lwc_2108_AccountRecordsPagination extends LightningElement 
   @track totalPages = 0; // the total no of pages in pagination
   @track draftValues = []; // holds the modified values in the data-table
   @track errorMessage; // from saveHandler method catch block
+  @track sortedBy = "Name"; //holds the fieldName when sorting event fired
+  /**
+   * holds the direction of sorting when sorting event is fired
+   * by default, it is asc, if sort event is fired its value will be desc.
+   * again if sort event is fired, its value changes from desc to asc
+   */
+  @track sortedDirection = "asc";
 
   //columns to display in the data-table
   @track columns = [
@@ -123,7 +139,10 @@ export default class Lwc_2108_AccountRecordsPagination extends LightningElement 
   ];
 
   //retrieve the account records from database using wire service
-  @wire(AccountController)
+  @wire(AccountController, {
+    sortedBy: "$sortedBy",
+    sortedDirection: "$sortedDirection"
+  })
   wiredAccounts({ data, error }) {
     if (data) {
       this.totalRecords = data;
@@ -212,5 +231,24 @@ export default class Lwc_2108_AccountRecordsPagination extends LightningElement 
           })
         );
       });
+  }
+
+  // used for sorting the data in the data-table (with the help of server call)
+  sortHandler(evt) {
+    this.sortedBy = evt.detail.fieldName;
+    this.sortedDirection = evt.detail.sortDirection;
+  }
+
+  // used for changing the data in data-table based on the input page number
+  inputHandler(evt) {
+    this.currentPageNum = evt.target.value;
+    this.updateDataTableRecords();
+  }
+
+  //used for changing the recordsPerPage
+  handleChange(evt) {
+    this.recordsPerPage = evt.target.value;
+    this.totalPages = Math.ceil(this.totalRecordCount / this.recordsPerPage);
+    this.updateDataTableRecords();
   }
 }

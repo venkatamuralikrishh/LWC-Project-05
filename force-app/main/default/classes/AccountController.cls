@@ -33,9 +33,10 @@ public with sharing class AccountController {
 
     //method used in Account Records pagination LWC component
     @AuraEnabled(cacheable=true)
-    public static List<Account> retrieveAllAccounts(){
-        List<Account> accList = [SELECT Id,Name,Type,BillingCountry,AnnualRevenue,Phone,isActive__c,SLAExpirationDate__c from Account WITH SECURITY_ENFORCED];
-        return accList;
+    public static List<Account> retrieveAllAccounts(String sortedBy, String sortedDirection){
+        String query = 'SELECT Id,Name,Type,BillingCountry,AnnualRevenue,Phone,isActive__c,SLAExpirationDate__c from Account';
+        query += ' ORDER BY ' + sortedBy + ' ' + sortedDirection;
+        return Database.query(query);
     }
 
     //method used in Account Records pagination LWC component

@@ -4,12 +4,34 @@
     icon-name="standard:action_list_component"
   >
     <div class="slds-m-around_medium">
+      <lightning-layout>
+        <lightning-layout-item size="4" padding="around-small">
+          <lightning-input
+            label="Enter Page Number"
+            type="number"
+            value={currentPageNum}
+            onchange={inputHandler}
+          ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" padding="around-small">
+          <lightning-combobox
+            label="Records Per Page"
+            value={value}
+            placeholder="Select Number"
+            options={options}
+            onchange={handleChange}
+          ></lightning-combobox>
+        </lightning-layout-item>
+      </lightning-layout>
       <lightning-datatable
         key-field="Id"
         data={displayRecords}
         columns={columns}
         onsave={saveHandler}
         draft-values={draftValues}
+        onsort={sortHandler}
+        sorted-by={sortedBy}
+        sorted-direction={sortedDirection}
       ></lightning-datatable>
       <p
         style="color: blue; font-size: 20px"
