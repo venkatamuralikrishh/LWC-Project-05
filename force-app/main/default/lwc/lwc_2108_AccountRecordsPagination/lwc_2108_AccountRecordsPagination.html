@@ -1,0 +1,29 @@
+<template>
+  <lightning-card
+    title="Account Records Pagination"
+    icon-name="standard:action_list_component"
+  >
+    <div class="slds-m-around_medium">
+      <lightning-datatable
+        key-field="Id"
+        data={displayRecords}
+        columns={columns}
+        onsave={saveHandler}
+        draft-values={draftValues}
+      ></lightning-datatable>
+      <p
+        style="color: blue; font-size: 20px"
+        class="slds-align_absolute-center"
+      >
+        Current Page Number : &nbsp;
+        <span style="color: red; font-size: 20px">{currentPageNum}</span> &nbsp;
+        of Total Pages : &nbsp;
+        <span style="color: red; font-size: 20px">{totalPages}</span>
+      </p>
+      <c-lwc_2108_paginator
+        onleft={leftHandler}
+        onright={rightHandler}
+      ></c-lwc_2108_paginator>
+    </div>
+  </lightning-card>
+</template>

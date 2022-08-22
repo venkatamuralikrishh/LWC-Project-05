@@ -1,0 +1,25 @@
+<template>
+  <lightning-card>
+    <div class="slds-m-around_medium">
+      <lightning-layout>
+        <lightning-layout-item>
+          <lightning-button
+            label="Previous"
+            icon-name="utility:left"
+            onclick={leftHandler}
+          >
+          </lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item flexibility="grow"></lightning-layout-item>
+        <lightning-layout-item>
+          <lightning-button
+            label="Next"
+            icon-name="utility:right"
+            onclick={rightHandler}
+          >
+          </lightning-button>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+  </lightning-card>
+</template>
