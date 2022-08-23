@@ -1,0 +1,5 @@
+<apex:page >
+    Hi Friends <br/>
+    This is Test Visualforce page used in the Email <br/>
+    Bye Friends
+</apex:page>
