@@ -1,1 +1,1 @@
-EmailService_OutBoundEmail_03.sendEmailWithAttachments();
+Integration_textLocal_SMS.sendSMS();
